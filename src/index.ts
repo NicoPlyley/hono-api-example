@@ -4,9 +4,9 @@ import dbConnect from './utils/db';
 import todos from './blueprints/todos/routes';
 import errorHandler from './utils/errorHandler';
 
-dbConnect()
-  .then(() => console.log('DB Connected'))
-  .catch((e) => console.log(e));
+(async () => {
+  await dbConnect();
+})();
 
 const app = new Hono();
 app.use('*', logger());
