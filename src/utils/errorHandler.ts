@@ -25,8 +25,12 @@ const errorHandler = async (error: any, c: Context) => {
     const messages = Object.values(error.errors).map((val: any) => val.message);
     const message = messages.join(', ');
     err = new ErrorResponse(message, 400); // Bad Request
+  } else if (
+    error.name === 'SyntaxError' &&
+    error.message === 'Unexpected end of JSON input'
+  ) {
+    err = new ErrorResponse('No data sent', 400);
   }
-
   // Send the error response
   return c.json(
     {
