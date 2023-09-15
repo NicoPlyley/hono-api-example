@@ -1,6 +1,7 @@
 import { Context } from 'hono';
 import Todos from './model';
 import asyncHandler from '../../utils/asyncHandler';
+
 // @desc    Get all todos
 // *Method  GET
 // ?route   /todos
@@ -21,10 +22,13 @@ export const createTodo = asyncHandler(async (c: Context) => {
 
   const data = await Todos.create(todo);
 
-  return c.json({
-    success: true,
-    data,
-  });
+  return c.json(
+    {
+      success: true,
+      data,
+    },
+    201,
+  );
 });
 
 // @desc    Get single item by id
@@ -90,7 +94,10 @@ export const deleteTodo = asyncHandler(async (c: Context) => {
     );
   }
 
-  return c.json({
-    success: true,
-  });
+  return c.json(
+    {
+      success: true,
+    },
+    204,
+  );
 });
