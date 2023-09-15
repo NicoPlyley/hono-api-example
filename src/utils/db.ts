@@ -5,8 +5,10 @@ const dbConnect = async () => {
 
   try {
     await mongoose.connect(MONGO_URI);
+    console.log(`MongoDB Connected...`);
   } catch (err) {
     console.error(err);
+    throw new Error('Failed to connect to the database');
   }
 };
 
