@@ -1,6 +1,5 @@
 import { Context, Hono } from 'hono';
-import Todos, { TodosDocument } from './model';
-import errorHandler from '../../utils/errorHandler';
+import Todos from './model';
 import { findOr404 } from './todos';
 
 const todos = new Hono();
