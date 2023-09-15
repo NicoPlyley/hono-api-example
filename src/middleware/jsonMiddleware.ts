@@ -1,6 +1,6 @@
-import { Context } from 'hono';
+import Middleware, { middleware } from 'hono/factory';
 
-const jsonParsingMiddleware = async (c: Context, next: () => Promise<void>) => {
+const jsonParsingMiddleware = middleware(async (c, next) => {
   try {
     if (c.req.method === 'POST' || c.req.method === 'PUT') {
       const json = (await c.req.json()) || null;
@@ -21,6 +21,6 @@ const jsonParsingMiddleware = async (c: Context, next: () => Promise<void>) => {
       400,
     );
   }
-};
+});
 
 export default jsonParsingMiddleware;
