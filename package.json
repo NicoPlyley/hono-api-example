@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "dependencies": {
+    "hono": "^3.6.0",
+    "mongoose": "^7.5.1"
+  },
+  "devDependencies": {
+    "bun-types": "^1.0.1",
+    "prettier": "^3.0.3"
+  }
+}
