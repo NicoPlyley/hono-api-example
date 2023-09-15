@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
 const TodoSchema = new mongoose.Schema({
   name: {
@@ -8,4 +8,8 @@ const TodoSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Todo', TodoSchema);
+export interface TodosDocument extends Document {
+  name?: string;
+}
+
+export default mongoose.model<TodosDocument>('Todo', TodoSchema);
